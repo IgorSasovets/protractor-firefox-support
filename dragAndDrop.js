@@ -2,7 +2,7 @@
 /**
  * Originally from: https://ghostinspector.com/blog/simulate-drag-and-drop-javascript-casperjs/,
  * https://github.com/kemokid/scripting-sortable/blob/master/script_sortable_dnd_more_general.js.
- * Modified by IgorSasovets (https://github.com/IgorSasovets) to simulate drag and drop movement
+ * Modified by IgorSasovets (https://github.com/IgorSasovets) to simulate drag and drop action
  * in Firefox browser (v.57.0.4).
  */
 
@@ -16,7 +16,7 @@ module.exports.dragAndDrop = `function dragAndDrop(selectorDrag, selectorDrop, o
         throw new Error('Error!Element selector not defined.');
     }
     
-    if (options.dragElemIndex) {
+    if (options.dragElemIndex !== undefined) {
         const elements = document.querySelectorAll(selectorDrag);
         elemDrag = elements[options.dragElemIndex];
     } else {
