@@ -1,3 +1,3 @@
-This is implementation of drag and drop function
-that can be used in e2e tests (written using Protractor framework)
-for Firefox browser.
+This is custom implementation of commonly used functions
+that can be used for e2e testing using Protractor
+in Firefox browser.
