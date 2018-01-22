@@ -6,12 +6,16 @@
  * in Firefox browser (v.57.0.4).
  */
 
-module.exports.mouseRightClick = `function mouseRight1Click() {
-    const [x, y] = [400, 200]; //define place where context menu will be opened
-    var element = document.getElementsByClassName('text-content')[0];//document.getElementsByTagName("h1")[0];
-    element.onmousedown = function(ev){
-        //Create event listener
-        //if(ev.button == 2)  alert("Rightclicked!")
+module.exports.mouseRightClick = `function mouseRightClick(elemClassSelector, options) {
+    //x and y define place where context menu will be opened
+    const x = (options.location.x !== undefined) ? options.location.x : 0;
+    const y = (options.location.y !== undefined) ? options.location.y : 0;
+    let element;
+    
+    if (options.elemIndex !== undefined) {
+        element = document.getElementsByClassName(elemClassSelector)[options.elemIndex];
+    } else {
+        element = document.querySelector(elemClassSelector);
     }
     
     if (document.createEvent) {
@@ -25,7 +29,7 @@ module.exports.mouseRightClick = `function mouseRight1Click() {
         rightClick.type = 'click';
         rightClick.button = 2;
         element.fireEvent('onclick', rightClick);
-    } else{
+    } else {
         alert('Not supported');
     }
    
@@ -36,5 +40,5 @@ module.exports.mouseRightClick = `function mouseRight1Click() {
     element.dispatchEvent(rightClickUp);
 };
 
-mouseRight1Click()`;
+mouseRightClick(arguments[0], arguments[1])`;
 
