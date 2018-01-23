@@ -30,7 +30,7 @@ module.exports.dragAndDrop = `function dragAndDrop(selectorDrag, selectorDrop, o
     /*************************CHECK USER CUSTOM OPTIONS*************************/
     
     if (options.makeDraggable)
-         makeDraggable(elements[1]);
+         makeDraggable(elemDrag);
     
     /***************************************************************************/  
     
