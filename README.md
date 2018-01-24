@@ -4,7 +4,7 @@ for e2e testing using Protractor framework in Firefox browser.
 Here is examples of custom functions usage:
 
 ```
-const helper = require('../support');
+const helper = require('<path to \'support.js\' file>/support');
 
 async performDnD({dragElementSelector = '<selector>', dragElementIndex = <some_index>,
     draggable = false} = {}) {
@@ -14,7 +14,7 @@ async performDnD({dragElementSelector = '<selector>', dragElementIndex = <some_i
 }
 
 async openElementContextMenu(selector) {
-    return browser.executeScript(helper.mouseRightClick, selector, {elemIndex: 0, location: {x: 100, y: 100}});
+    return browser.executeScript(helper.rightMouseBtnClick, selector, {elemIndex: 0, location: {x: 100, y: 100}});
 }
 
 mouseUp(pointCoordinates = {x: 100, y: 100}) {
