@@ -1,0 +1,27 @@
+{
+  "name": "tests-examples",
+  "version": "1.0.0",
+  "description": "Examples of tests in which you can use implemented functions",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IgorSasovets/protractor-firefox-support.git"
+  },
+  "keywords": [
+    "protractor",
+    "firefox",
+    "support"
+  ],
+  "author": "Igor Sasovets",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IgorSasovets/protractor-firefox-support/issues"
+  },
+  "homepage": "https://github.com/IgorSasovets/protractor-firefox-support#readme",
+  "devDependencies": {
+    "protractor": "^5.2.2"
+  }
+}
