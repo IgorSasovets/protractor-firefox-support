@@ -6,11 +6,11 @@ Here is examples of custom functions usage:
 ```
 const helper = require('<path to \'support.js\' file>/support');
 
-async performDnD({dragElementSelector = '<selector>', dragElementIndex = <some_index>,
+async performDnD({dragElmSelector = '<selector>', dragElmIndex = <some_index>,
     draggable = false} = {}) {
     const dropPoint = {x: 100, y: 100};
-    const options = {makeDraggable: draggable, dragElemIndex: dragElementIndex, dropLocation: dropPoint};
-    return browser.executeScript(helper.dragAndDrop, dragElementSelector, null, options);
+    const options = {makeDraggable: draggable, dragElemIndex: dragElmIndex, dropLocation: dropPoint};
+    return browser.executeScript(helper.dragAndDrop, dragElmSelector, null, options);
 }
 
 async openElementContextMenu(selector) {
@@ -19,5 +19,18 @@ async openElementContextMenu(selector) {
 
 mouseUp(pointCoordinates = {x: 100, y: 100}) {
     return browser.executeScript(helper.mouseUp, pointCoordinates);
+}
+
+mouseMove(pointCoordinates = {x: 100, y: 100}) {
+    return browser.executeScript(helper.mouseMove, pointCoordinates);
+}
+
+mouseDown({selector = undefined, index = 0} = {}) {
+    return browser.executeScript(helper.mouseDown, {elementSelector: selector,
+      elementIndex: index});
+}
+
+mouseClick(selector, elmIndex, clickPointCoordinates) {
+   return browser.executeScript(helper.mouseLeftClick, selector, clickPointCoordinates, elmIndex);
 }
 ```
