@@ -1,8 +1,13 @@
 {
-  "name": "tests-examples",
+  "name": "protractor-firefox-support",
   "version": "1.0.0",
-  "description": "Examples of tests in which you can use implemented functions",
-  "main": "config.js",
+  "description": "This lib contains implementation of basic actions which can be used for e2e testing in Firefox browser",
+  "main": "support.js",
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "tests"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,17 +18,12 @@
   "keywords": [
     "protractor",
     "firefox",
-    "support"
+    "actions"
   ],
   "author": "Igor Sasovets",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/IgorSasovets/protractor-firefox-support/issues"
   },
-  "homepage": "https://github.com/IgorSasovets/protractor-firefox-support#readme",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-as-promised": "^7.1.1",
-    "protractor": "^5.2.2"
-  }
+  "homepage": "https://github.com/IgorSasovets/protractor-firefox-support#readme"
 }

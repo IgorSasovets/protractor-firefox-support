@@ -10,7 +10,7 @@ exports.config = {
     ],
 
   params: {
-    dndTemplateUrl: 'https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_draggable'
+    dndTemplateUrl: 'http://codef0rmer.github.io/angular-dragdrop/#!/'
   },
 
   onPrepare: function () {
