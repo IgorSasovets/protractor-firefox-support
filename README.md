@@ -30,7 +30,11 @@ mouseDown({selector = undefined, index = 0} = {}) {
       elementIndex: index});
 }
 
-mouseClick(selector, elmIndex, clickPointCoordinates) {
-   return browser.executeScript(helper.mouseLeftClick, selector, clickPointCoordinates, elmIndex);
+mouseClick({elemSelector, point, elemIndex} = {}) {
+   const options = {};
+   (elemSelector) ? options.selector = elemSelector : null;
+   (point) ? options.point = point : null;
+   (elemIndex) ? options.elementIndex = elemIndex : null;
+   return browser.executeScript(helper.mouseLeftClick, options);
 }
 ```
