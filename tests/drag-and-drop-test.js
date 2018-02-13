@@ -26,18 +26,21 @@ describe('Custom DnD function tests', () => {
   });
   describe('Negative', () => {
     describe('Call DnD without required parameters', () => {
-      it('Should confirm that function throw error without specified elements selectors', () => {
+      it('Should confirm that function throws error without specified elements selectors', () => {
         return browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000)
           .then(() => {
             return browser.executeScript(support.dragAndDrop);
           })
           .catch(err => {
-            console.log(err);
             expect(err.toString().indexOf('Error!Element selector not defined'))
               .not.toEqual(-1);
           });
       });
-      it('Should confirm that function throw error with uncorrect dropElemSelector', () => {
+      /*
+       * Here we'll get 'not specified selector error' because dropElementSelector
+       * will be converted to null in DnD function.
+       */
+      it('Should confirm that function throws error with uncorrect dropElemSelector', () => {
         let dropElemSelector;
         return browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000)
           .then(() => {
@@ -48,6 +51,13 @@ describe('Custom DnD function tests', () => {
             expect(err.toString().indexOf('Error!Cannot get element with specified selector'))
               .not.toEqual(-1);
           });
+      });
+      it('Should confirm that function throws error when options parameter not specified', () => {
+          return browser.executeScript(support.dragAndDrop, 'dragElemSelector', 'dropElemSelector')
+            .catch(err => {
+              expect(err.toString().indexOf('Options not specified!'))
+                .not.toEqual(-1);
+            });
       });
     });
   });

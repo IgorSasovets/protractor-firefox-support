@@ -6,14 +6,12 @@ exports.config = {
   },
 
   specs: [
+    'mouse-events-test.js',
     'drag-and-drop-test.js'
     ],
 
   params: {
-    dndTemplateUrl: 'http://codef0rmer.github.io/angular-dragdrop/#!/'
-  },
-
-  onPrepare: function () {
-      browser.driver.manage().window().setSize(1200, 980);
+    dndTemplateUrl: 'http://codef0rmer.github.io/angular-dragdrop/#!/',
+    rightClickTemplateUrl: 'https://demos.telerik.com/kendo-ui/menu/context-menu-angular'
   }
 }
