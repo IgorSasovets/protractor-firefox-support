@@ -2,14 +2,14 @@
 const support = require('../support');
 const params = browser.params;
 
-describe('Custom DnD function tests', () => {
+describe('Mouse events functions tests', () => {
   describe('Positive', () => {
     const div = $('.btn.btn-primary');
     /*
      *  In example below we need some extra wait to finish mouseUp action
-     *  and only after it perform comparison.
+     *  and only after it check expectation.
      */
-    describe('Confirm ability to perform DnD action using mouse eventsin firefox', () => {
+    describe('Confirm ability to perform DnD action using mouse events in firefox', () => {
       beforeAll(() => {
         return browser.get(params.dndTemplateUrl);
       });
@@ -23,6 +23,39 @@ describe('Custom DnD function tests', () => {
           .then(() => browser.sleep(500))
           .then(() => {
             expect(successDiv.isDisplayed()).toBe(true);
+          });
+      });
+    });
+    describe('mouseClick function test', () => {
+      beforeAll(() => {
+        return browser.get(params.clickTemplateUrl);
+      });
+      it('Should perform click on elements', function() {
+        const clickTgt = $$('.md-icon-button').get(5);
+        const notificationsOffIcon = $('#notifications-off');
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(clickTgt), 5000)
+          .then(() => browser.executeScript(support.mouseClick, {selector: '.md-icon-button',
+            elementIndex: 5}))
+          .then(() => browser.sleep(500))
+          .then(() => {
+            expect(notificationsOffIcon.isDisplayed()).toBe(true);
+          });
+      });
+    });
+    describe('mouseRightClick function test', () => {
+      beforeAll(() => {
+        return browser.get(params.rightClickTemplateUrl);
+      });
+      it('Should open context menu on right click', function() {
+        const clickTgt = $$('tr').get(0);
+        const notificationsOffIcon = $('.sh_menu_container');
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(clickTgt), 5000)
+          .then(() => browser.sleep(5000))
+          .then(() => browser.executeScript(support.rightMouseBtnClick, 'tr', {//elemIndex: 1,
+            location: {x: 100, y: 40}}))
+          .then(() => browser.sleep(4000))
+          .then(() => {
+            expect(notificationsOffIcon.isDisplayed()).toBe(true);
           });
       });
     });

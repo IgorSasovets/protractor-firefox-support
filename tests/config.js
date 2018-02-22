@@ -8,10 +8,11 @@ exports.config = {
   specs: [
     'mouse-events-test.js',
     'drag-and-drop-test.js'
-    ],
+  ],
 
   params: {
     dndTemplateUrl: 'http://codef0rmer.github.io/angular-dragdrop/#!/',
-    rightClickTemplateUrl: 'https://demos.telerik.com/kendo-ui/menu/context-menu-angular'
+    clickTemplateUrl: 'https://material.angularjs.org/latest/demo/menu',
+    rightClickTemplateUrl: 'https://msarsha.github.io/angular-right-click/'
   }
 }
