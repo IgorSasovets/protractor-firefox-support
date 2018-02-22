@@ -1,7 +1,13 @@
 This is custom implementation of commonly used functions
 for e2e testing using Protractor framework in Firefox browser.
 
-Here is examples of custom functions usage:
+You can simply install it into your project using this command:
+
+```
+npm install protractor-firefox-support --save
+```
+
+Here are examples of custom functions usage:
 
 ```
 const helper = require('<path to \'support.js\' file>/support');
