@@ -43,21 +43,21 @@ describe('Mouse events functions tests', () => {
       });
     });
     describe('mouseRightClick function test', () => {
-      beforeAll(() => {
-        return browser.get(params.rightClickTemplateUrl);
-      });
-      it('Should open context menu on right click', function() {
-        const clickTgt = $$('tr').get(0);
-        const notificationsOffIcon = $('.sh_menu_container');
-        return browser.wait(protractor.ExpectedConditions.visibilityOf(clickTgt), 5000)
-          .then(() => browser.sleep(5000))
-          .then(() => browser.executeScript(support.rightMouseBtnClick, 'tr', {//elemIndex: 1,
-            location: {x: 100, y: 40}}))
-          .then(() => browser.sleep(4000))
-          .then(() => {
-            expect(notificationsOffIcon.isDisplayed()).toBe(true);
-          });
-      });
+       beforeAll(() => {
+         return browser.get(params.rightClickTemplateUrl);
+       });
+       it('Should open context menu on right click', function() {
+         const clickTgt = $('.hasMenu');
+         const contextMenu = $$('.k-item.k-state-default.k-first').get(1);
+         return browser.wait(protractor.ExpectedConditions.visibilityOf(clickTgt), 5000)
+           .then(() => clickTgt.getLocation())
+           .then(location => browser.executeScript(support.rightMouseBtnClick, '.hasMenu',
+            {location: {x: Math.floor(location.x), y: Math.floor(location.y)}}))
+           .then(() => browser.sleep(1000))
+           .then(() => {
+             expect(contextMenu.isDisplayed()).toBe(true);
+           });
+       });
     });
   });
   describe('Negative', () => {

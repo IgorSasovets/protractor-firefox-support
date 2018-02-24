@@ -1,5 +1,11 @@
+protractor-firefox-support
+--------------------------
+
 This is custom implementation of commonly used functions
 for e2e testing using Protractor framework in Firefox browser.
+
+Installation
+------------
 
 You can simply install it into your project using this command:
 
@@ -7,19 +13,22 @@ You can simply install it into your project using this command:
 npm install protractor-firefox-support --save
 ```
 
+Examples of usage
+-----------------
+
 Here are examples of custom functions usage:
 
 ```
 const helper = require('<path to \'support.js\' file>/support');
 
-async performDnD({dragElmSelector = '<selector>', dragElmIndex = <some_index>,
+performDnD({dragElmSelector = '<selector>', dragElmIndex = <some_index>,
     draggable = false} = {}) {
     const dropPoint = {x: 100, y: 100};
     const options = {makeDraggable: draggable, dragElemIndex: dragElmIndex, dropLocation: dropPoint};
     return browser.executeScript(helper.dragAndDrop, dragElmSelector, null, options);
 }
 
-async openElementContextMenu(selector) {
+openElementContextMenu(selector) {
     return browser.executeScript(helper.rightMouseBtnClick, selector, {elemIndex: 0, location: {x: 100, y: 100}});
 }
 
@@ -44,3 +53,30 @@ mouseClick({elemSelector, point, elemIndex} = {}) {
    return browser.executeScript(helper.mouseLeftClick, options);
 }
 ```
+
+Run tests
+---------
+
+First of all you need to install necessary packages using next command:
+
+```
+npm run install-modules-tests
+```
+
+Then update webdriver-manager packages, start it and run tests:
+
+```
+npm run webdriver-update-windows
+npm run webdriver-start-windows
+npm run test-windows
+```
+
+for Windows or
+
+```
+npm run webdriver-update-linux
+npm run webdriver-start-linux
+npm run test-linux
+```
+
+for Linux/MacOS.

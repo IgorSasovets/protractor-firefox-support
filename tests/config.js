@@ -13,6 +13,6 @@ exports.config = {
   params: {
     dndTemplateUrl: 'http://codef0rmer.github.io/angular-dragdrop/#!/',
     clickTemplateUrl: 'https://material.angularjs.org/latest/demo/menu',
-    rightClickTemplateUrl: 'https://msarsha.github.io/angular-right-click/'
+    rightClickTemplateUrl: 'https://demos.telerik.com/kendo-ui/menu/context-menu-angular'
   }
 }

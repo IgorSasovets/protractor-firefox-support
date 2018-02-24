@@ -1,6 +1,6 @@
 {
   "name": "protractor-firefox-support",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This lib contains implementation of basic actions which can be used for e2e testing in Firefox browser",
   "main": "support.js",
   "directories": {
@@ -9,7 +9,13 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "install-modules-tests": "cd tests && npm install",
+    "webdriver-update-windows": "node tests\\node_modules\\protractor\\bin\\webdriver-manager update",
+    "webdriver-start-windows": "node tests\\node_modules\\protractor\\bin\\webdriver-manager start",
+    "test-windows": "node .\\tests\\node_modules\\protractor\\bin\\protractor tests\\config.js",
+    "webdriver-update-linux": "node tests/node_modules/protractor/bin/webdriver-manager update",
+    "webdriver-start-linux": "node tests/node_modules/protractor/bin/webdriver-manager start",
+    "test-linux": "node ./tests/node_modules/protractor/bin/protractor config.js"
   },
   "repository": {
     "type": "git",
