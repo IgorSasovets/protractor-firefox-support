@@ -19,7 +19,7 @@ Examples of usage
 Here are examples of custom functions usage:
 
 ```
-const helper = require('<path to \'support.js\' file>/support');
+const helper = require('protractor-firefox-support');
 
 performDnD({dragElmSelector = '<selector>', dragElmIndex = <some_index>,
     draggable = false} = {}) {
