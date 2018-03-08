@@ -21,15 +21,35 @@ Here are examples of custom functions usage:
 ```
 const helper = require('protractor-firefox-support');
 
-performDnD({dragElmSelector = '<selector>', dragElmIndex = <some_index>,
+performDnD({dragElmSelector = '.btn.btn-primary', dragElmIndex,
     draggable = false} = {}) {
     const dropPoint = {x: 100, y: 100};
-    const options = {makeDraggable: draggable, dragElemIndex: dragElmIndex, dropLocation: dropPoint};
+    const options = {makeDraggable: draggable, dropLocation: dropPoint};
+
+    /**
+     *  You can define dragElement index if there are more than
+     *  one element with specified selector.
+     */
+
+    (dragElmIndex) ? options.dragElemIndex = dragElmIndex : null;
+
+    /**
+     *  Also you can pass selector instead of null, if you want to specify
+     *  drop element.
+     */
     return browser.executeScript(helper.dragAndDrop, dragElmSelector, null, options);
 }
 
-openElementContextMenu(selector) {
-    return browser.executeScript(helper.rightMouseBtnClick, selector, {elemIndex: 0, location: {x: 100, y: 100}});
+openElementContextMenu({selector, elemIndex} = {}) {
+    const options = {location: {x: 100, y: 100}};
+
+    /**
+     *  If there are more element that match specified selector, add elemIndex option.
+     *  Property 'location' defines screen coordinates where context menu will be opened.
+     */
+
+    (elemIndex) ? options.elemIndex = elemIndex : null;
+    return browser.executeScript(helper.rightMouseBtnClick, selector, options);
 }
 
 mouseUp(pointCoordinates = {x: 100, y: 100}) {
@@ -40,7 +60,10 @@ mouseMove(pointCoordinates = {x: 100, y: 100}) {
     return browser.executeScript(helper.mouseMove, pointCoordinates);
 }
 
-mouseDown({selector = undefined, index = 0} = {}) {
+mouseDown({selector, index} = {}) {
+    /**
+     *  If there are more element that match specified selector, add elementIndex option.
+     */
     return browser.executeScript(helper.mouseDown, {elementSelector: selector,
       elementIndex: index});
 }
