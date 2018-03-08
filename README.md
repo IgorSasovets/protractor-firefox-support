@@ -44,7 +44,7 @@ openElementContextMenu({selector, elemIndex} = {}) {
     const options = {location: {x: 100, y: 100}};
 
     /**
-     *  If there are more element that match specified selector, add elemIndex option.
+     *  If there are more elements which match specified selector, add elemIndex option.
      *  Property 'location' defines screen coordinates where context menu will be opened.
      */
 
@@ -62,7 +62,7 @@ mouseMove(pointCoordinates = {x: 100, y: 100}) {
 
 mouseDown({selector, index} = {}) {
     /**
-     *  If there are more element that match specified selector, add elementIndex option.
+     *  If there are more elements which match specified selector, add elementIndex option.
      */
     return browser.executeScript(helper.mouseDown, {elementSelector: selector,
       elementIndex: index});
