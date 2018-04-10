@@ -1,7 +1,7 @@
 protractor-firefox-support
 --------------------------
 
-This is custom implementation of commonly used functions
+This is custom implementation of [Actions](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html) class functions
 for e2e testing using Protractor framework in Firefox browser.
 
 Installation
@@ -17,6 +17,9 @@ Examples of usage
 -----------------
 
 Here are examples of custom functions usage:
+
+dragAndDrop
+-----------
 
 ```
 const helper = require('protractor-firefox-support');
@@ -39,7 +42,11 @@ performDnD({dragElmSelector = '.btn.btn-primary', dragElmIndex,
      */
     return browser.executeScript(helper.dragAndDrop, dragElmSelector, null, options);
 }
+```
 
+openContextMenu(rightMouseClick)
+--------------------------------
+```
 openElementContextMenu({selector, elemIndex} = {}) {
     const options = {location: {x: 100, y: 100}};
 
@@ -51,15 +58,27 @@ openElementContextMenu({selector, elemIndex} = {}) {
     (elemIndex) ? options.elemIndex = elemIndex : null;
     return browser.executeScript(helper.rightMouseBtnClick, selector, options);
 }
+```
 
+mouseUp
+-------
+```
 mouseUp(pointCoordinates = {x: 100, y: 100}) {
     return browser.executeScript(helper.mouseUp, pointCoordinates);
 }
+```
 
+mouseMove
+---------
+```
 mouseMove(pointCoordinates = {x: 100, y: 100}) {
     return browser.executeScript(helper.mouseMove, pointCoordinates);
 }
+```
 
+mouseDown
+---------
+```
 mouseDown({selector, index} = {}) {
     /**
      *  If there are more elements which match specified selector, add elementIndex option.
@@ -67,7 +86,11 @@ mouseDown({selector, index} = {}) {
     return browser.executeScript(helper.mouseDown, {elementSelector: selector,
       elementIndex: index});
 }
+```
 
+mouseClick
+----------
+```
 mouseClick({elemSelector, point, elemIndex} = {}) {
    const options = {};
    (elemSelector) ? options.selector = elemSelector : null;
