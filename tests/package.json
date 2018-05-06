@@ -1,7 +1,7 @@
 {
   "name": "tests-examples",
-  "version": "1.0.0",
-  "description": "Examples of tests in which you can use implemented functions",
+  "version": "1.0.1",
+  "description": "Examples of tests with implemented functions usage",
   "main": "config.js",
   "scripts": {
     "test": "snyk test"
