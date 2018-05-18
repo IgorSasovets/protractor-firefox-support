@@ -3,6 +3,7 @@ protractor-firefox-support
 
 This is custom implementation of [Actions](https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html) class functions
 for e2e testing using Protractor framework in Firefox browser.
+If you use it, ⭐️ it.
 
 Installation
 ------------
