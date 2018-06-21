@@ -101,6 +101,19 @@ mouseClick({elemSelector, point, elemIndex} = {}) {
 }
 ```
 
+changeInputText(beta)
+---------------------
+```
+changeInputText(selector, text, {elemIndex} = {}) {
+    /**
+    *  If there are more elements which match specified selector, add elemIndex option.
+    */
+    const options = {};
+    (elemIndex) ? options.elemIndex = elemIndex : null;
+    return browser.executeScript(support.changeInputText, selector, text, options);
+} 
+```
+
 Run tests
 ---------
 

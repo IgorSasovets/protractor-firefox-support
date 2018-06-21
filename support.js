@@ -3,7 +3,8 @@ const dragAndDrop = require('./lib/dragAndDrop'),
 	mouseClick = require('./lib/mouseClick'),
 	mouseDown = require('./lib/mouseDown'),
 	mouseMove = require('./lib/mouseMove'),
-	rightMouseBtnClick = require('./lib/rightMouseButtonClick');
+	rightMouseBtnClick = require('./lib/rightMouseButtonClick'),
+	changeInputText = require('./lib/changeInputText');
 
 module.exports = {
 	dragAndDrop: dragAndDrop,
@@ -11,5 +12,6 @@ module.exports = {
 	mouseClick: mouseClick,
 	mouseDown: mouseDown,
 	mouseMove: mouseMove,
-	rightMouseBtnClick: rightMouseBtnClick
+	rightMouseBtnClick: rightMouseBtnClick,
+	changeInputText: changeInputText
 }
