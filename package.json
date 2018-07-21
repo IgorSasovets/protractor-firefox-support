@@ -1,6 +1,6 @@
 {
   "name": "protractor-firefox-support",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "This lib contains implementation of basic actions which can be used for e2e testing in Firefox browser",
   "main": "support.js",
   "directories": {
