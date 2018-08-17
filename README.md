@@ -17,7 +17,8 @@ npm install protractor-firefox-support --save
 Examples of usage
 -----------------
 
-Here are examples of custom functions usage:
+Here are examples of custom functions usage. Functions presented as separated
+modules which can be imported in test files:
 
 dragAndDrop
 -----------
@@ -25,8 +26,8 @@ dragAndDrop
 ```
 const helper = require('protractor-firefox-support');
 
-performDnD({dragElmSelector = '.btn.btn-primary', dragElmIndex,
-    draggable = false} = {}) {
+module.exports.performDnD = ({dragElmSelector = '.btn.btn-primary', dragElmIndex,
+    draggable = false} = {}) => {
     const dropPoint = {x: 100, y: 100};
     const options = {makeDraggable: draggable, dropLocation: dropPoint};
 
@@ -47,8 +48,11 @@ performDnD({dragElmSelector = '.btn.btn-primary', dragElmIndex,
 
 openContextMenu(rightMouseClick)
 --------------------------------
+
 ```
-openElementContextMenu({selector, elemIndex} = {}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.openElementContextMenu = ({selector, elemIndex} = {}) => {
     const options = {location: {x: 100, y: 100}};
 
     /**
@@ -63,24 +67,33 @@ openElementContextMenu({selector, elemIndex} = {}) {
 
 mouseUp
 -------
+
 ```
-mouseUp(pointCoordinates = {x: 100, y: 100}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.mouseUp = (pointCoordinates = {x: 100, y: 100}) => {
     return browser.executeScript(helper.mouseUp, pointCoordinates);
 }
 ```
 
 mouseMove
 ---------
+
 ```
-mouseMove(pointCoordinates = {x: 100, y: 100}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.mouseMove = (pointCoordinates = {x: 100, y: 100}) => {
     return browser.executeScript(helper.mouseMove, pointCoordinates);
 }
 ```
 
 mouseDown
 ---------
+
 ```
-mouseDown({selector, index} = {}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.mouseDown = ({selector, index} = {}) => {
     /**
      *  If there are more elements which match specified selector, add elementIndex option.
      */
@@ -91,8 +104,11 @@ mouseDown({selector, index} = {}) {
 
 mouseClick
 ----------
+
 ```
-mouseClick({elemSelector, point, elemIndex} = {}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.mouseClick = ({elemSelector, point, elemIndex} = {}) => {
    const options = {};
    (elemSelector) ? options.selector = elemSelector : null;
    (point) ? options.point = point : null;
@@ -103,8 +119,11 @@ mouseClick({elemSelector, point, elemIndex} = {}) {
 
 changeInputText(beta)
 ---------------------
+
 ```
-changeInputText(selector, text, {elemIndex} = {}) {
+const helper = require('protractor-firefox-support');
+
+module.exports.changeInputText = (selector, text, {elemIndex} = {}) => {
     /**
     *  If there are more elements which match specified selector, add elemIndex option.
     */
