@@ -20,8 +20,8 @@ Examples of usage
 Here are examples of custom functions usage. Functions presented as separated
 modules which can be imported in test files:
 
-dragAndDrop
------------
+dragAndDrop (complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleDND.js))
+------------
 
 ```
 const helper = require('protractor-firefox-support');
@@ -46,7 +46,7 @@ module.exports.performDnD = ({dragElmSelector = '.btn.btn-primary', dragElmIndex
 }
 ```
 
-openContextMenu(rightMouseClick)
+openContextMenu(rightMouseClick, complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleMouseActions.js))
 --------------------------------
 
 ```
@@ -65,7 +65,7 @@ module.exports.openElementContextMenu = ({selector, elemIndex} = {}) => {
 }
 ```
 
-mouseUp
+mouseUp (complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleMouseActions.js))
 -------
 
 ```
@@ -76,7 +76,7 @@ module.exports.mouseUp = (pointCoordinates = {x: 100, y: 100}) => {
 }
 ```
 
-mouseMove
+mouseMove (complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleMouseActions.js))
 ---------
 
 ```
@@ -87,7 +87,7 @@ module.exports.mouseMove = (pointCoordinates = {x: 100, y: 100}) => {
 }
 ```
 
-mouseDown
+mouseDown (complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleMouseActions.js))
 ---------
 
 ```
@@ -102,7 +102,7 @@ module.exports.mouseDown = ({selector, index} = {}) => {
 }
 ```
 
-mouseClick
+mouseClick (complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleMouseClick.js))
 ----------
 
 ```
@@ -117,7 +117,7 @@ module.exports.mouseClick = ({elemSelector, point, elemIndex} = {}) => {
 }
 ```
 
-changeInputText(beta)
+changeInputText(beta, complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleChangeText.js))
 ---------------------
 
 ```
