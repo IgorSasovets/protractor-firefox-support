@@ -24,7 +24,7 @@ dragAndDrop (complete example [here](https://github.com/IgorSasovets/protractor-
 ------------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.performDnD = ({dragElmSelector = '.btn.btn-primary', dragElmIndex,
     draggable = false} = {}) => {
@@ -42,7 +42,7 @@ module.exports.performDnD = ({dragElmSelector = '.btn.btn-primary', dragElmIndex
      *  Also you can pass selector instead of null, if you want to specify
      *  drop element.
      */
-    return browser.executeScript(helper.dragAndDrop, dragElmSelector, null, options);
+    return browser.executeScript(support.dragAndDrop, dragElmSelector, null, options);
 }
 ```
 
@@ -50,7 +50,7 @@ openContextMenu(rightMouseClick, complete example [here](https://github.com/Igor
 --------------------------------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.openElementContextMenu = ({selector, elemIndex} = {}) => {
     const options = {location: {x: 100, y: 100}};
@@ -61,7 +61,7 @@ module.exports.openElementContextMenu = ({selector, elemIndex} = {}) => {
      */
 
     (elemIndex) ? options.elemIndex = elemIndex : null;
-    return browser.executeScript(helper.rightMouseBtnClick, selector, options);
+    return browser.executeScript(support.rightMouseBtnClick, selector, options);
 }
 ```
 
@@ -69,10 +69,10 @@ mouseUp (complete example [here](https://github.com/IgorSasovets/protractor-fire
 -------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.mouseUp = (pointCoordinates = {x: 100, y: 100}) => {
-    return browser.executeScript(helper.mouseUp, pointCoordinates);
+    return browser.executeScript(support.mouseUp, pointCoordinates);
 }
 ```
 
@@ -80,10 +80,10 @@ mouseMove (complete example [here](https://github.com/IgorSasovets/protractor-fi
 ---------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.mouseMove = (pointCoordinates = {x: 100, y: 100}) => {
-    return browser.executeScript(helper.mouseMove, pointCoordinates);
+    return browser.executeScript(support.mouseMove, pointCoordinates);
 }
 ```
 
@@ -91,13 +91,13 @@ mouseDown (complete example [here](https://github.com/IgorSasovets/protractor-fi
 ---------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.mouseDown = ({selector, index} = {}) => {
     /**
      *  If there are more elements which match specified selector, add elementIndex option.
      */
-    return browser.executeScript(helper.mouseDown, {elementSelector: selector,
+    return browser.executeScript(support.mouseDown, {elementSelector: selector,
       elementIndex: index});
 }
 ```
@@ -106,14 +106,14 @@ mouseClick (complete example [here](https://github.com/IgorSasovets/protractor-f
 ----------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
-module.exports.mouseClick = ({elemSelector, point, elemIndex} = {}) => {
+module.exports.mouseClick = ({elemSelector, point, tgtIndex} = {}) => {
    const options = {};
    (elemSelector) ? options.selector = elemSelector : null;
    (point) ? options.point = point : null;
-   (elemIndex) ? options.elementIndex = elemIndex : null;
-   return browser.executeScript(helper.mouseLeftClick, options);
+   (tgtIndex) ? options.elementIndex = tgtIndex : null;
+   return browser.executeScript(support.mouseClick, options);
 }
 ```
 
@@ -121,7 +121,7 @@ changeInputText(beta, complete example [here](https://github.com/IgorSasovets/pr
 ---------------------
 
 ```
-const helper = require('protractor-firefox-support');
+const support = require('protractor-firefox-support');
 
 module.exports.changeInputText = (selector, text, {elemIndex} = {}) => {
     /**
@@ -130,6 +130,22 @@ module.exports.changeInputText = (selector, text, {elemIndex} = {}) => {
     const options = {};
     (elemIndex) ? options.elemIndex = elemIndex : null;
     return browser.executeScript(support.changeInputText, selector, text, options);
+} 
+```
+
+dispatchEvent(complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/dispatchEvent.js))
+---------------------
+
+```
+const support = require('protractor-firefox-support');
+
+module.exports.dispatchEvent = ({selector, tgtIndex, eventType} = {}) => {
+    /**
+    *  If there are more elements which match specified selector, add elementIndex option.
+    */
+    const options = {selector: selector, eventType: eventType};
+    (tgtIndex) ? options.elementIndex = tgtIndex : null;
+    return browser.executeScript(support.dispatchEvent, options);
 } 
 ```
 
