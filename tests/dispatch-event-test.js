@@ -31,6 +31,22 @@ describe('Dispatch event UI tests', () => {
             expect(contextMenuOption.isPresent()).toBe(true);
         });
     });
+    describe('Dispatch mouseover event to element', () => {
+        beforeAll(async() => {
+            const emailButton = $('.TK-Aside-Menu-Item.TK-bn');
+            browser.ignoreSynchronization = true;
+            await browser.get(params.mouseOverDemo);
+            await browser.wait(EC.elementToBeClickable(emailButton), 7000);
+        });
+        it('Should open element context menu using mouseover event', async() => {
+            const contextMenuOption = element(by.cssContainingText('ul.TK-Dropdown a.TK-Dropdown-Link',
+                'jQuery'));
+            await browser.executeScript(support.dispatchEvent, {selector: '.TK-Menu-Item',
+                eventType: 'mouseenter', elementIndex: 1, isMouseEvent: true});
+            await browser.sleep(500);
+            expect(contextMenuOption.isPresent()).toBe(true);
+        });
+    });
 });
 
 describe('Dispatch error handling tests', () => {

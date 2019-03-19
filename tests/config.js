@@ -18,6 +18,7 @@ exports.config = {
     rightClickTemplateUrl: 'https://demos.telerik.com/kendo-ui/menu/context-menu-angular',
     angularjsOrg: 'https://angularjs.org/',
     expansionPanelUrl: 'https://material.angular.io/components/expansion/overview',
-    contextMenuDemo: 'https://live.yworks.com/demos/input/contextmenu/index.html'
+    contextMenuDemo: 'https://live.yworks.com/demos/input/contextmenu/index.html',
+    mouseOverDemo: 'https://demos.telerik.com/kendo-ui/'
   }
 }
