@@ -139,11 +139,11 @@ dispatchEvent(complete example [here](https://github.com/IgorSasovets/protractor
 ```
 const support = require('protractor-firefox-support');
 
-module.exports.dispatchEvent = ({selector, tgtIndex, eventType} = {}) => {
+module.exports.dispatchEvent = ({selector, tgtIndex, eventType, isMouseEvent} = {}) => {
     /**
     *  If there are more elements which match specified selector, add elementIndex option.
     */
-    const options = {selector: selector, eventType: eventType};
+    const options = {selector: selector, eventType: eventType, isMouseEvent: isMouseEvent};
     (tgtIndex) ? options.elementIndex = tgtIndex : null;
     return browser.executeScript(support.dispatchEvent, options);
 } 
