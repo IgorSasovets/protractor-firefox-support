@@ -1,4 +1,5 @@
 'use strict';
+const { expect } = require('chai');
 const support = require('../support');
 const params = browser.params;
 const EC = protractor.ExpectedConditions;
@@ -11,12 +12,12 @@ describe('Change input text UI tests', () => {
     it('Should type user name', async() => {
         const userName = 'Bob';
         await browser.executeScript(support.changeInputText, 'input[ng-model=\'yourName\']', userName);
-        expect($('.span4>.well h1').getText()).toEqual(`Hello ${userName}!`);
+        expect(await $('.span4>.well h1').getText()).to.equal(`Hello ${userName}!`);
     });
     it('Should type user name to input selected using elemIndex option', async() => {
         const userName = 'Alice';
         await browser.executeScript(support.changeInputText, 'input', userName, {elemIndex: 0});
-        expect($('.span4>.well h1').getText()).toEqual(`Hello ${userName}!`);
+        expect(await $('.span4>.well h1').getText()).to.equal(`Hello ${userName}!`);
     });
 });
 
@@ -26,14 +27,14 @@ describe('Change input text error handling tests', () => {
             return browser.executeScript(support.changeInputText)
                 .catch(err => {
                     expect(err.toString().indexOf('Element selector or text value not defined!'))
-                        .not.toEqual(-1);
+                        .not.to.equal(-1);
                 });
         });
         it('Should confirm that function throws error if text parameter not set', () => {
             return browser.executeScript(support.changeInputText, 'button')
                 .catch(err => {
                     expect(err.toString().indexOf('Element selector or text value not defined!'))
-                        .not.toEqual(-1);
+                        .not.to.equal(-1);
                 });
         });
     });
@@ -48,7 +49,7 @@ describe('Change input text error handling tests', () => {
             return browser.executeScript(support.changeInputText, elemSelector, 'Default')
                 .catch(err => {
                     expect(err.toString().indexOf('Cannot find element using selector ' + elemSelector))
-                        .not.toEqual(-1);
+                        .not.to.equal(-1);
                 });
         });
     });

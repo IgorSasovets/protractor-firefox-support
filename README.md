@@ -133,17 +133,17 @@ module.exports.changeInputText = (selector, text, {elemIndex} = {}) => {
 } 
 ```
 
-dispatchEvent(complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/dispatchEvent.js))
+dispatchEvent(complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleDispatchEvent.js))
 ---------------------
 
 ```
 const support = require('protractor-firefox-support');
 
-module.exports.dispatchEvent = ({selector, tgtIndex, eventType, isMouseEvent} = {}) => {
+module.exports.dispatchEvent = ({selector, tgtIndex, eventType, isMouseEvent, eventArguments} = {}) => {
     /**
     *  If there are more elements which match specified selector, add elementIndex option.
     */
-    const options = {selector: selector, eventType: eventType, isMouseEvent: isMouseEvent};
+    const options = {selector, eventType, isMouseEvent, eventArguments};
     (tgtIndex) ? options.elementIndex = tgtIndex : null;
     return browser.executeScript(support.dispatchEvent, options);
 } 

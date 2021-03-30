@@ -19,6 +19,7 @@ exports.config = {
     angularjsOrg: 'https://angularjs.org/',
     expansionPanelUrl: 'https://material.angular.io/components/expansion/overview',
     contextMenuDemo: 'https://live.yworks.com/demos/input/contextmenu/index.html',
+    contextMenujQueryDemo: 'https://swisnl.github.io/jQuery-contextMenu/demo.html',
     mouseOverDemo: 'https://demos.telerik.com/kendo-ui/'
   }
 }
