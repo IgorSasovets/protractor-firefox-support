@@ -1,4 +1,5 @@
 'use strict';
+const { expect } = require('chai');
 const support = require('../support');
 const params = browser.params;
 const EC = protractor.ExpectedConditions;
@@ -12,7 +13,9 @@ describe('Dispatch event UI tests', () => {
         it('Should expand panel with \'Personal data\'', async() => {
             await browser.executeScript(support.dispatchEvent, {selector: '.mat-expansion-panel-header',
                 eventType: 'click', elementIndex: 0});
-            expect($('input[placeholder=\'First name\']').isPresent()).toBe(true);
+            const expandedPanels = $$('.mat-expansion-panel-content .mat-expansion-panel-body');
+            expect(await expandedPanels.count()).to.equal(2);
+            expect(await expandedPanels.first().getText()).to.equal('This is the primary content of the panel.');
         });
     });
     describe('Dispatch contextmenu event to element', () => {
@@ -28,7 +31,22 @@ describe('Dispatch event UI tests', () => {
             await browser.executeScript(support.dispatchEvent, {selector: '#graphComponent',
                 eventType: 'contextmenu'});
             await browser.sleep(2000);
-            expect(contextMenuOption.isPresent()).toBe(true);
+            expect(await contextMenuOption.isPresent()).to.be.true;
+        });
+    });
+    describe('Dispatch contextmenu event to element with eventArguments', () => {
+        const openMenuButton = $('.context-menu-one');
+        beforeAll(async() => {
+            browser.ignoreSynchronization = true;
+            await browser.get(params.contextMenujQueryDemo);
+            await browser.wait(EC.elementToBeClickable(openMenuButton), 7000);
+        });
+        it('Should open element context menu', async() => {
+            const contextMenuOptions = $$('.context-menu-item');
+            await browser.executeScript(support.dispatchEvent, {selector: '.context-menu-one',
+                eventType: 'contextmenu', eventArguments: {bubbles: true}});
+            await browser.sleep(500);
+            expect(await contextMenuOptions.count()).to.equal(7);
         });
     });
     describe('Dispatch mouseover event to element', () => {
@@ -44,7 +62,7 @@ describe('Dispatch event UI tests', () => {
             await browser.executeScript(support.dispatchEvent, {selector: '.TK-Menu-Item',
                 eventType: 'mouseenter', elementIndex: 1, isMouseEvent: true});
             await browser.sleep(500);
-            expect(contextMenuOption.isPresent()).toBe(true);
+            expect(await contextMenuOption.isPresent()).to.be.true;
         });
     });
 });

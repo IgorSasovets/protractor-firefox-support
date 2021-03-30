@@ -1,4 +1,5 @@
 'use strict';
+const { expect } = require('chai');
 const support = require('../support');
 const params = browser.params;
 
@@ -8,21 +9,15 @@ describe('Custom DnD function tests', () => {
       return browser.get(params.dndTemplateUrl);
   });
   describe('Confirm ability to perform drag and drop action in firefox', () => {
-    it('Should perform drag and drop action', function() {
+    it('Should perform drag and drop action', async() => {
       const selector = '.btn.btn-primary';
       const successDiv = $('.btn.btn-success');
-      return browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000)
-        .then(() => {
-          return browser.executeScript(support.dragAndDrop, selector, null,
-            {dropLocation: {x: 100, y: 150}});
-        })
-        .then(() => {
-            return browser.sleep(2000);
-        })
-        .then(() => {
-            expect(successDiv.isDisplayed()).toBe(true);
-        });
-      });
+      await browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000);
+      await browser.executeScript(support.dragAndDrop, selector, null,
+        {dropLocation: {x: 100, y: 150}});
+      await browser.sleep(2000);
+      expect(await successDiv.isDisplayed()).to.be.true;
+    });
   });
   describe('Negative', () => {
     describe('Call DnD without required parameters', () => {
@@ -33,7 +28,7 @@ describe('Custom DnD function tests', () => {
           })
           .catch(err => {
             expect(err.toString().indexOf('Error!Element selector not defined'))
-              .not.toEqual(-1);
+              .not.to.equal(-1);
           });
       });
       /*
@@ -49,14 +44,14 @@ describe('Custom DnD function tests', () => {
           })
           .catch(err => {
             expect(err.toString().indexOf('Error!Cannot get element with specified selector'))
-              .not.toEqual(-1);
+              .not.to.equal(-1);
           });
       });
       it('Should confirm that function throws error when options parameter not specified', () => {
           return browser.executeScript(support.dragAndDrop, 'dragElemSelector', 'dropElemSelector')
             .catch(err => {
               expect(err.toString().indexOf('Options not specified!'))
-                .not.toEqual(-1);
+                .not.to.equal(-1);
             });
       });
     });

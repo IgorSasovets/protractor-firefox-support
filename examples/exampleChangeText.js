@@ -1,4 +1,5 @@
 'use strict';
+const { expect } = require('chai');
 const support = require('protractor-firefox-support');
 const params = browser.params;
 const EC = protractor.ExpectedConditions;
@@ -11,11 +12,11 @@ describe('Change input text UI tests', () => {
     it('Should type user name', async() => {
         const userName = 'Bob';
         await browser.executeScript(support.changeInputText, 'input[ng-model=\'yourName\']', userName);
-        expect($('.span4>.well h1').getText()).toEqual(`Hello ${userName}!`);
+        expect(await $('.span4>.well h1').getText()).to.equal(`Hello ${userName}!`);
     });
     it('Should type user name to input selected using elemIndex option', async() => {
         const userName = 'Alice';
         await browser.executeScript(support.changeInputText, 'input', userName, {elemIndex: 0});
-        expect($('.span4>.well h1').getText()).toEqual(`Hello ${userName}!`);
+        expect(await $('.span4>.well h1').getText()).to.equal(`Hello ${userName}!`);
     });
 });
