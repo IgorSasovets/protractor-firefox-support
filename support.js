@@ -5,15 +5,17 @@ const dragAndDrop = require('./lib/dragAndDrop'),
 	mouseMove = require('./lib/mouseMove'),
 	rightMouseBtnClick = require('./lib/rightMouseButtonClick'),
 	changeInputText = require('./lib/changeInputText'),
-	dispatchEvent = require('./lib/dispatchEvent');
+	dispatchEvent = require('./lib/dispatchEvent'),
+	createEvent = require('./lib/createEvent');
 
 module.exports = {
-	dragAndDrop: dragAndDrop,
-	mouseUp: mouseUp,
-	mouseClick: mouseClick,
-	mouseDown: mouseDown,
-	mouseMove: mouseMove,
-	rightMouseBtnClick: rightMouseBtnClick,
-	changeInputText: changeInputText,
-	dispatchEvent: dispatchEvent
+	dragAndDrop,
+	mouseUp,
+	mouseClick,
+	mouseDown,
+	mouseMove,
+	rightMouseBtnClick,
+	changeInputText,
+	dispatchEvent,
+	createEvent
 }

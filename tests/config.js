@@ -9,7 +9,8 @@ exports.config = {
     'mouse-events-test.js',
     'drag-and-drop-test.js',
     'change-input-text-test.js',
-    'dispatch-event-test.js'
+    'dispatch-event-test.js',
+    'create-event-test.js'
   ],
 
   params: {

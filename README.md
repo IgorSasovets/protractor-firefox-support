@@ -149,6 +149,27 @@ module.exports.dispatchEvent = ({selector, tgtIndex, eventType, isMouseEvent, ev
 } 
 ```
 
+createEvent(complete example [here](https://github.com/IgorSasovets/protractor-firefox-support/blob/master/examples/exampleCreateEvent.js))
+---------------------
+
+**WARNING!**
+
+This function is experimental and is not fully supported. If you have working examples and implementations for events that are
+not covered yet (currently, `contextmenu` has a separate implementation with examples), feel free to open a PR for it.
+
+```
+const support = require('protractor-firefox-support');
+
+module.exports.createEvent = ({selector, tgtIndex, eventType, eventName, eventArguments} = {}) => {
+    /**
+    *  If there are more elements which match specified selector, add elementIndex option.
+    */
+    const options = {selector, eventType, eventName, eventArguments};
+    (tgtIndex) ? options.elementIndex = tgtIndex : null;
+    return browser.executeScript(support.createEvent, options);
+} 
+```
+
 Run tests
 ---------
 
