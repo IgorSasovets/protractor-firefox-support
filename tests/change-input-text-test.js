@@ -5,6 +5,7 @@ const params = browser.params;
 const EC = protractor.ExpectedConditions;
 
 describe('Change input text UI tests', () => {
+    beforeAll(() => browser.waitForAngularEnabled(false));
     beforeEach(async() => {
         await browser.get(params.angularjsOrg);
         await browser.wait(EC.elementToBeClickable($('.hero .button-large.button-primary')), 7000);

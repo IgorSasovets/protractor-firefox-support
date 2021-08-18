@@ -8,6 +8,7 @@ const EC = protractor.ExpectedConditions;
 describe('Dispatch event UI tests', () => {
     describe('Dispatch click event to element', () => {
         beforeAll(async() => {
+            await browser.waitForAngularEnabled(false);
             await browser.get(params.expansionPanelUrl);
             await browser.wait(EC.elementToBeClickable($$('.mat-expansion-panel-header').first()), 7000);
         });
