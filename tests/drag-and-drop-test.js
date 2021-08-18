@@ -5,13 +5,14 @@ const params = browser.params;
 
 describe('Custom DnD function tests', () => {
   const div = $('.btn.btn-primary');
+  const successDiv = $('.btn.btn-success');
+  beforeAll(() => browser.waitForAngularEnabled(false));
   beforeEach(() => {
       return browser.get(params.dndTemplateUrl);
   });
   describe('Confirm ability to perform drag and drop action in firefox', () => {
     it('Should perform drag and drop action', async() => {
       const selector = '.btn.btn-primary';
-      const successDiv = $('.btn.btn-success');
       await browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000);
       await browser.executeScript(support.dragAndDrop, selector, null,
         {dropLocation: {x: 100, y: 150}});
@@ -22,11 +23,12 @@ describe('Custom DnD function tests', () => {
   describe('Negative', () => {
     describe('Call DnD without required parameters', () => {
       it('Should confirm that function throws error without specified elements selectors', () => {
-        return browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000)
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(successDiv), 5000)
           .then(() => {
             return browser.executeScript(support.dragAndDrop);
           })
           .catch(err => {
+            console.log(err.toString());
             expect(err.toString().indexOf('Error!Element selector not defined'))
               .not.to.equal(-1);
           });
@@ -37,7 +39,7 @@ describe('Custom DnD function tests', () => {
        */
       it('Should confirm that function throws error with uncorrect dropElemSelector', () => {
         let dropElemSelector;
-        return browser.wait(protractor.ExpectedConditions.visibilityOf(div), 5000)
+        return browser.wait(protractor.ExpectedConditions.visibilityOf(successDiv), 5000)
           .then(() => {
             return browser.executeScript(support.dragAndDrop, 'dragElemSelector', dropElemSelector,
               {});

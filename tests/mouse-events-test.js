@@ -1,5 +1,6 @@
 'use strict';
 const { expect } = require('chai');
+const { browser } = require('protractor');
 const support = require('../support');
 const params = browser.params;
 
@@ -11,7 +12,8 @@ describe('Mouse events functions tests', () => {
      *  and only after it check expectation.
      */
     describe('Confirm ability to perform DnD action using mouse events in firefox', () => {
-      beforeAll(() => {
+      beforeAll(async() => {
+        await browser.waitForAngularEnabled(false);
         return browser.get(params.dndTemplateUrl);
       });
       it('Should perform DnD using mouse actions', async() => {

@@ -9,7 +9,7 @@ describe('Create event UI tests', () => {
     describe('Dispatch contextmenu event to element', () => {
         const openMenuButton = $('.context-menu-one');
         beforeAll(async() => {
-            browser.ignoreSynchronization = true;
+            await browser.waitForAngularEnabled(false);
             await browser.get(params.contextMenujQueryDemo);
             await browser.wait(EC.elementToBeClickable(openMenuButton), 7000);
         });
