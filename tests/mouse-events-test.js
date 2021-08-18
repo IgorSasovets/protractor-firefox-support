@@ -1,6 +1,5 @@
 'use strict';
 const { expect } = require('chai');
-const { browser } = require('protractor');
 const support = require('../support');
 const params = browser.params;
 
