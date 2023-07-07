@@ -26,6 +26,6 @@
     "chai-as-promised": "7.1.1",
     "mocha": "8.3.2",
     "protractor": "7.0.0",
-    "snyk": "1.517.0"
+    "snyk": "1.1187.0"
   }
 }
